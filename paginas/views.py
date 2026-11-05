@@ -18,3 +18,12 @@ def vista_acerca_de(request):  # nuevo
     return render(request, "acerca_de.html", contexto)
 
 
+def vista_proyectos(request):
+    contexto = {
+        "proyectos": [
+            "SaaS de automatizaciones en Python",
+            "Algun juego que utilice WebGPU",
+            "Sitio para mis finanzas a la medida",
+        ],
+    }
+    return render(request, "proyectos.html", contexto)
