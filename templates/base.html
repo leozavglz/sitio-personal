@@ -1,0 +1,18 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block titulo %}Mi sitio personal{% endblock titulo %}</title>
+</head>
+<body>
+  <header>
+    <a href="/">Inicio</a> |
+    <a href="/acerca-de/">Acerca de</a>
+  </header>
+  <main>
+    {% block contenido %}
+    {% endblock contenido %}
+  </main>
+</body>
+</html>
