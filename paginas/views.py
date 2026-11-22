@@ -31,3 +31,13 @@ class VistaProyectos(TemplateView):
             "Sitio para mis finanzas a la medida",
         ]
         return contexto
+
+def vista_saludo(request, nombre):  # nuevo
+    return render(request, "saludo.html", {"nombre": nombre})
+
+def vista_cuadrado(request, numero):
+    contexto = {
+        "numero": numero,
+        "cuadrado": numero ** 2,
+    }
+    return render(request, "cuadrado.html", contexto)
