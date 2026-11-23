@@ -1,17 +1,19 @@
 # paginas/views.py
 from django.shortcuts import render
-from django.views.generic import TemplateView  # nuevo
+from django.views.generic import TemplateView
 
 
-def vista_inicio(request):
-    contexto = {
-        "habilidades": ["Python", "Django", "Git"],
-        "mensaje": "GRACIAS por VISITAR mi sitio.",
-    }
-    return render(request, "inicio.html", contexto)
+class VistaInicio(TemplateView):
+    template_name = "inicio.html"
+
+    def get_context_data(self, **kwargs):
+        contexto = super().get_context_data(**kwargs)
+        contexto["habilidades"] = ["Python", "Django", "Git"]
+        contexto["mensaje"] = "GRACIAS por VISITAR mi sitio."
+        return contexto
 
 
-class VistaAcercaDe(TemplateView):  # nuevo
+class VistaAcercaDe(TemplateView):
     template_name = "acerca_de.html"
 
     def get_context_data(self, **kwargs):
@@ -19,6 +21,7 @@ class VistaAcercaDe(TemplateView):  # nuevo
         contexto["nombre"] = "Leonardo"
         contexto["edad"] = 25
         return contexto
+
 
 class VistaProyectos(TemplateView):
     template_name = "proyectos.html"
@@ -32,12 +35,14 @@ class VistaProyectos(TemplateView):
         ]
         return contexto
 
-def vista_saludo(request, nombre):  # nuevo
+
+def vista_saludo(request, nombre):
     return render(request, "saludo.html", {"nombre": nombre})
+
 
 def vista_cuadrado(request, numero):
     contexto = {
         "numero": numero,
-        "cuadrado": numero ** 2,
+        "cuadrado": numero**2,
     }
     return render(request, "cuadrado.html", contexto)
