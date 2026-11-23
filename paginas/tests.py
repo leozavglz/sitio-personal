@@ -39,7 +39,7 @@ class PruebasPaginaAcercaDe(SimpleTestCase):
 
     def test_contenido_plantilla(self):
         respuesta = self.client.get(reverse("acerca_de"))
-        self.assertContains(respuesta, "Me llamo Ana")
+        self.assertContains(respuesta, "Me llamo Leonardo")
 
 
 class PruebasPaginaSaludo(SimpleTestCase):
